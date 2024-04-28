@@ -1,63 +1,52 @@
-/**
- * Navigation component for creating a responsive navigation bar with mobile menu support.
- * @module Navigation
- */
-
 import { useIsMobile } from "../hooks/useIsMobile";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Fragment, useEffect, useState } from "react";
+import logo from "../../public/images/logo.png";
 
 const Navigation = () => {
     const isMobile = useIsMobile();
     const [showMobileMenu, setShowMobileMenu] = useState(false);
 
-    /**
-     * Toggles the visibility of the mobile menu.
-     */
     const toggleMobileMenu = () => {
         setShowMobileMenu((prevState) => !prevState);
     };
 
-    /**
-     * Closes the mobile menu.
-     */
+    console.log(logo);
     const closeMobileMenu = () => {
         setShowMobileMenu(false);
     };
 
     useEffect(() => {
-        /**
-         * Event handler to handle resize events and close the mobile menu if the device is no longer mobile.
-         */
         const handleResize = () => {
             if (!isMobile) {
                 setShowMobileMenu(false);
             }
         };
 
-        window.addEventListener("resize", handleResize); // Adding event listener for window resize
-
-        return () => window.removeEventListener("resize", handleResize); // Removing event listener on component unmount
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
     }, [isMobile]);
 
-    // Effect to toggle body overflow based on mobile menu visibility
     useEffect(() => {
-        document.body.style.overflow = showMobileMenu ? "hidden" : ""; // Prevent scrolling when mobile menu is open
-
+        document.body.style.overflow = showMobileMenu ? "hidden" : "";
         return () => {
-            document.body.style.overflow = ""; // Reset body overflow style on component unmount
+            document.body.style.overflow = "";
         };
-    }, [showMobileMenu]); // Dependency array containing showMobileMenu state
+    }, [showMobileMenu]);
 
     return (
-        <nav className="flex h-16 items-center justify-between px-6 text-stone-100">
-            <div>LOGO</div>
-            {/* Button to toggle mobile menu */}
+        <nav className="relative flex h-24 items-center justify-between px-6 text-stone-100">
+            <div className="w-24 pt-2">
+                <Link to="/">
+                    <img src={logo} alt="logo" />
+                </Link>
+            </div>
             <button
                 onClick={toggleMobileMenu}
-                className={`z-50 block md:hidden ${showMobileMenu ? "hidden" : ""}`}
+                className={`z-50 block md:hidden ${
+                    showMobileMenu ? "hidden" : ""
+                }`}
             >
-                {/* Hamburger menu icon */}
                 <svg
                     className="h-8 w-8"
                     viewBox="0 0 24 24"
@@ -70,46 +59,54 @@ const Navigation = () => {
                     />
                 </svg>
             </button>
-            {/* Render mobile menu if showMobileMenu is true and the device is mobile */}
             {showMobileMenu && isMobile && (
-                <div className="fixed right-0 top-0 z-50 flex min-h-screen w-full translate-x-0 transform items-center justify-center bg-white bg-opacity-15 shadow-lg backdrop-blur-lg transition-transform duration-1000">
+                <div
+                    className="fixed right-0 top-0 z-50 flex min-h-screen w-full translate-x-0 transform 
+                        items-center justify-center bg-white bg-opacity-15 shadow-lg backdrop-blur-lg
+                        transition-transform duration-1000"
+                >
                     <div className="mb-[150px] flex flex-col gap-4 text-center">
-                        {/* Mobile menu links */}
                         <NavLink
                             to="/"
-                            className="text-2xl"
+                            className={`text-2xl ${
+                                showMobileMenu ? "opacity-100" : "opacity-0"
+                            }`}
                             onClick={closeMobileMenu}
                         >
                             Inicio
                         </NavLink>
                         <NavLink
                             to="#"
-                            className="text-2xl"
+                            className={`text-2xl ${
+                                showMobileMenu ? "opacity-100" : "opacity-0"
+                            }`}
                             onClick={closeMobileMenu}
                         >
                             Tienda
                         </NavLink>
                         <NavLink
                             to="#"
-                            className="text-2xl"
+                            className={`text-2xl ${
+                                showMobileMenu ? "opacity-100" : "opacity-0"
+                            }`}
                             onClick={closeMobileMenu}
                         >
                             Contacto
                         </NavLink>
                         <NavLink
                             to="#"
-                            className="text-2xl"
+                            className={`text-2xl ${
+                                showMobileMenu ? "opacity-100" : "opacity-0"
+                            }`}
                             onClick={closeMobileMenu}
                         >
                             Cuenta
                         </NavLink>
                     </div>
-                    {/* Close mobile menu button */}
                     <button
                         onClick={toggleMobileMenu}
                         className="absolute right-2 top-3 mr-4 mt-1"
                     >
-                        {/* Close icon */}
                         <svg
                             className="h-8 w-8"
                             viewBox="0 0 24 24"
@@ -127,11 +124,8 @@ const Navigation = () => {
                     </button>
                 </div>
             )}
-
-            {/* Render desktop menu if the device is not mobile */}
             {!isMobile && (
                 <Fragment>
-                    {/* Desktop menu links */}
                     <div className="flex gap-8">
                         <NavLink to="/" className="text-lg">
                             Inicio
