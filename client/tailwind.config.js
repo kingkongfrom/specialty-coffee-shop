@@ -7,7 +7,7 @@ export default {
                 "background-header": "url('images/bg-header.jpg')",
             },
             fontFamily: {
-                sans: ["Lato", "sans-serif"],
+                serif: ["Merriweather", "serif"],
             },
             height: {
                 screen: "100dvh",
@@ -17,7 +17,7 @@ export default {
                 colorSecondary: "#D0CABD",
                 colorBase: "#BBAA92",
                 colorDark: "#2B281C",
-            }
+            },
         },
     },
     plugins: [],
