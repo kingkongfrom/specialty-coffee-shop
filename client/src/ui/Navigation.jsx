@@ -2,6 +2,7 @@ import { useIsMobile } from "../hooks/useIsMobile";
 import { Link, NavLink } from "react-router-dom";
 import { Fragment, useEffect, useState } from "react";
 import logo from "../../public/images/logo.png";
+import Logo from "./Logo.jsx";
 
 const Navigation = () => {
     const isMobile = useIsMobile();
@@ -36,34 +37,16 @@ const Navigation = () => {
 
     return (
         <nav className="relative flex h-24 items-center justify-between px-6 text-stone-100">
-            <div className="w-24 pt-2">
-                <Link to="/">
-                    <img src={logo} alt="logo" />
-                </Link>
-            </div>
-            <button
-                onClick={toggleMobileMenu}
-                className={`z-50 block md:hidden ${
-                    showMobileMenu ? "hidden" : ""
-                }`}
-            >
-                <svg
-                    className="h-8 w-8"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"
-                        fill="currentColor"
-                    />
+            <Logo/>
+            <button onClick={toggleMobileMenu} className={`z-50 block md:hidden ${showMobileMenu ? "hidden" : ""}`}>
+                <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" fill="currentColor"/>
                 </svg>
             </button>
             {showMobileMenu && isMobile && (
-                <div
-                    className="fixed right-0 top-0 z-50 flex min-h-screen w-full translate-x-0 transform 
-                        items-center justify-center bg-white bg-opacity-15 shadow-lg backdrop-blur-lg
-                        transition-transform duration-1000"
+                <div className="fixed right-0 top-0 z-50 flex min-h-screen w-full translate-x-0 transform
+                     items-center justify-center bg-colorPrimary bg-opacity-30 shadow-lg backdrop-blur-lg
+                     transition-transform duration-1000"
                 >
                     <div className="mb-[150px] flex flex-col gap-4 text-center">
                         <NavLink
@@ -75,13 +58,7 @@ const Navigation = () => {
                         >
                             Inicio
                         </NavLink>
-                        <NavLink
-                            to="#"
-                            className={`text-2xl ${
-                                showMobileMenu ? "opacity-100" : "opacity-0"
-                            }`}
-                            onClick={closeMobileMenu}
-                        >
+                        <NavLink to="/store" className={`text-2xl ${showMobileMenu ? "opacity-100" : "opacity-0"}`} onClick={closeMobileMenu}>
                             Tienda
                         </NavLink>
                         <NavLink
@@ -105,7 +82,7 @@ const Navigation = () => {
                     </div>
                     <button
                         onClick={toggleMobileMenu}
-                        className="absolute right-2 top-3 mr-4 mt-1"
+                        className="absolute right-2 top-7 mr-4 mt-1"
                     >
                         <svg
                             className="h-8 w-8"
@@ -127,15 +104,9 @@ const Navigation = () => {
             {!isMobile && (
                 <Fragment>
                     <div className="flex gap-8">
-                        <NavLink to="/" className="text-lg">
-                            Inicio
-                        </NavLink>
-                        <NavLink to="#" className="text-lg">
-                            Tienda
-                        </NavLink>
-                        <NavLink to="#" className="text-lg">
-                            Contacto
-                        </NavLink>
+                        <NavLink to="/" className="text-lg">Inicio</NavLink>
+                        <NavLink to="/store" className="text-lg">Tienda</NavLink>
+                        <NavLink to="#" className="text-lg">Contacto</NavLink>
                     </div>
                     <div>
                         <NavLink to="#" className="text-lg">
