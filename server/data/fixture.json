@@ -1,0 +1,40 @@
+[
+  {
+    "producer": "Don Lucas",
+    "variety": "Geisha",
+    "process": "lavado",
+    "price": 15.99,
+    "description": "Café Don Lucas Geish es un café de especialidad de la variedad gehisha cultivado en la región cafetalera de Tarrazú. Tanto en la producción como en el procesamiento, nuestra finca y el micromolino reúnen las características óptimas para un café de alta calidad.",
+    "weight": 380,
+    "grinding": "grano entero",
+    "roast": "medio",
+    "SKU": "CRDL001",
+    "region": "tarrazu"
+  },
+  {
+    "producer": "Don Cayito",
+    "variety": "Moka",
+    "process": "lavado",
+    "price": 11.99,
+    "description": "La variedad Moka es una de las antiguas del mundo procede de Yemen y su nombre proviene de uno de los puertos principales en aquella época llamado Al-Mukha.",
+    "weight": 200,
+    "grinding": "grano entero",
+    "roast": "medio",
+    "category": "Cafe",
+    "SKU": "CRCY002",
+    "region": "tarrazu"
+  },
+  {
+    "producer": "Don Cayito",
+    "variety": "Geisha",
+    "process": "lavado",
+    "price": 13.99,
+    "description": "Geisha es una variedad única y exótica, ganadora en concursos de taza de excelencia en numerosos países. Es una planta de porte alto, producción media y consistente año a año. Proveniente de Finca Don Cayito ubicada en Copey de Dota a una altura de 1900msnm",
+    "weight": 200,
+    "grinding": "grano entero",
+    "roast": "medio",
+    "category": "Cafe",
+    "SKU": "CRDC003",
+    "region": "tarrazu"
+  }
+]

@@ -1,61 +1,62 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const coffeeSchema = mongoose.Schema({
+const coffeeSchema = new mongoose.Schema({
     producer: {
         type: String,
-        required: true,
-        unique: true,
+        required: [true, "this is required"],
     },
-    organic:{
-        type: Boolean,
-        required: true,
-    },
-    variety:{
+    variety: {
         type: String,
-        required: true,
+        required: [true, "this is required"]
     },
-    roast:{
-        enum: ['claro','medio','oscuro'],
-        required: true,
-    },
-    weight:{
-        enum: [200,380,500,1000],
-        required: true,
-    },
-    grinding:{
-        enum: ['molido','grano entero'],
-        required: true,
-    },
-    region:{
-        type: ["valle central", "tres rios", "turrialba", "brunca", "guanacaste", "tarrazu", "orosi","valle oriental"],
-        required: true,
-    },
-    process:{
-        type: ['lavado','natural','honey'],
-        required: true,
-    },
-    description:{
+    roast: {
         type: String,
-        required: true,
+        enum: ["claro", "medio", "oscuro"],
+        required: [true, "this is required"]
     },
-    price:{
+    weight: {
         type: Number,
-        required: true,
+        enum: [200, 380, 500, 1000],
+        required: [true, "this is required"]
     },
-    discount:{
+    grinding: {
+        type: String,
+        enum: ["molido", "grano entero"],
+        required: [true, "this is required"]
+    },
+    region: {
+        type: String,
+        enum: ["valle central", "tres rios", "turrialba", "brunca", "guanacaste", "tarrazu", "orosi", "valle oriental"],
+        required: [true, "this is required"]
+    },
+    process: {
+        type: String,
+        enum: ["lavado", "natural", "honey"],
+        required: [true, "this is required"]
+    },
+    description: {
+        type: String,
+        required: [true, "this is required"]
+    },
+    price: {
+        type: Number,
+        required:[true, "this is required"]
+    },
+    discount: {
         type: Number,
     },
-    discount_start_date:{
+    discount_start_date: {
         type: Date,
     },
-    discount_end_date:{
+    discount_end_date: {
         type: Date,
     },
-    SKU:{
-        type: Number,
-        required: true,
+    SKU: {
+        type: String,
+        required: [true, "this is required"]
     }
 });
 
-const coffee = mongoose.model('coffee', coffeeSchema);
+const Coffee = mongoose.model("Coffee", coffeeSchema);
+module.exports = Coffee;
 
