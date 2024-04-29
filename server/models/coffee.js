@@ -22,7 +22,7 @@ const coffeeSchema = mongoose.Schema({
         enum: [200,380,500,1000],
         required: true,
     },
-    grindSize:{
+    grinding:{
         enum: ['molido','grano entero'],
         required: true,
     },
@@ -44,15 +44,12 @@ const coffeeSchema = mongoose.Schema({
     },
     discount:{
         type: Number,
-        required: true,
     },
     discount_start_date:{
         type: Date,
-        required: true,
     },
     discount_end_date:{
         type: Date,
-        required: true,
     },
     SKU:{
         type: Number,
