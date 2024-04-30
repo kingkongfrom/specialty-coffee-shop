@@ -4,8 +4,10 @@ import Error from "./ui/Error.jsx";
 import Home from "./pages/Home.jsx";
 import StoreLayout from "./layouts/StoreLayout.jsx";
 import FrontStore from "./pages/FrontStore.jsx";
-import AdminLayout from "./layouts/AdminLayout.jsx";
-import AdminPage from "./pages/AdminPage.jsx";
+import AdminLayout from "./layouts/admin/AdminLayout.jsx";
+import AdminPage from "./pages/admin/AdminPage.jsx";
+import AddCoffeePage from "./pages/admin/AddCoffeePage.jsx";
+import ProductsPage from "./pages/admin/ProductsPage.jsx";
 
 function App() {
     const router = createBrowserRouter([
@@ -22,7 +24,11 @@ function App() {
         {
             element: <AdminLayout />,
             errorElement: <Error />,
-            children: [{ path: "/admin", element: <AdminPage /> }],
+            children: [
+                { path: "/admin", element: <AdminPage /> },
+                { path: "/admin/products/", element: <ProductsPage /> },
+                { path: "/admin/products/coffee/add", element: <AddCoffeePage /> },
+            ],
         },
     ]);
 
