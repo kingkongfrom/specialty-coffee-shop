@@ -1,6 +1,6 @@
-import Header from "./Header.jsx";
+import Header from "../ui/Header.jsx";
 import { Outlet } from "react-router-dom";
-import Footer from "./Footer.jsx";
+import Footer from "../ui/Footer.jsx";
 
 const AppLayout = () => {
     return (

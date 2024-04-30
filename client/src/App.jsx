@@ -1,25 +1,28 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import AppLayout from "./ui/AppLayout.jsx";
+import AppLayout from "./layouts/AppLayout.jsx";
 import Error from "./ui/Error.jsx";
 import Home from "./pages/Home.jsx";
-import StoreLayout from "./ui/StoreLayout.jsx";
-import FrontStore from "./features/store/FrontStore.jsx";
+import StoreLayout from "./layouts/StoreLayout.jsx";
+import FrontStore from "./pages/FrontStore.jsx";
+import AdminLayout from "./layouts/AdminLayout.jsx";
+import AdminPage from "./pages/AdminPage.jsx";
 
 function App() {
     const router = createBrowserRouter([
         {
             element: <AppLayout />,
             errorElement: <Error />,
-            children: [
-                { path: "/", element: <Home /> }
-            ],
+            children: [{ path: "/", element: <Home /> }],
         },
         {
             element: <StoreLayout />,
             errorElement: <Error />,
-            children: [
-                {path: "store", element: <FrontStore/>}
-            ]
+            children: [{ path: "/store", element: <FrontStore /> }],
+        },
+        {
+            element: <AdminLayout />,
+            errorElement: <Error />,
+            children: [{ path: "/admin", element: <AdminPage /> }],
         },
     ]);
 
