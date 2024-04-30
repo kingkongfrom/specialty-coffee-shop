@@ -8,7 +8,7 @@ const AdminLayout = () => {
             <div className="bg-colorDark">
                 <Navigation />
             </div>
-            <main className="mx-auto min-h-screen max-w-5xl overflow-auto">
+            <main className="h-screen overflow-hidden">
                 <Outlet />
             </main>
             <Footer />
