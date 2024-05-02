@@ -1,25 +1,31 @@
 import { Box, Center, IconButton, Text, Flex } from '@chakra-ui/react'
 import { GiHamburgerMenu } from "react-icons/gi";
 import Logo from "../../../ui/Logo.jsx";
+import ThemeToggle from "../../../ui/ThemeToggle.jsx";
 
 const Header = ({ showSidebarButton = true, onShowSidebar }) => {
+
     return (
-        <Flex bg="yellow.800" p={4} color="white" justifyContent="center" alignItems="center">
-            <Box flex="1">
+        <Flex className='bg-colorDark dark:bg-colorBase' color="white" justifyContent="space-between" alignItems="center" px={5}>
+            <Box >
                 {showSidebarButton && (
                     <IconButton
                         icon={<GiHamburgerMenu  w={8} h={8} />}
-                        colorScheme="whiteAlpha"
-                        variant="outline"
+                        className='text-colorBase dark:text-colorDark'
+                        variant="fill"
                         onClick={onShowSidebar}
                         aria-label="open sidebar"
+                        ms={5}
                     />
                 )}
             </Box>
-            <Center flex="1" h="40px" py={8} className='visible md:invisible'>
+            <Box className='visible md:invisible py-3 '>
                 <Box fontSize="xl"><Logo/></Box>
-            </Center>
-            <Box flex="1" />
+            </Box>
+
+            <Box >
+                <ThemeToggle />
+            </Box>
         </Flex>
     )
 }
