@@ -17,9 +17,9 @@ import SidebarButton from "./SidebarButton.jsx";
 
 //Sidebar Content defined with a vertical stack with buttons
 const SidebarContent = ({ variant , hover }) => (
-    <VStack className='text-colorBase dark:text-colorDark'>
-        <Box className='invisible h-[50px] md:visible md:h-auto'>
-            <Logo/>
+    <VStack className='text-colorBase'>
+        <Box className='invisible h-[50px] md:visible md:h-auto md:mb-3'>
+            <Logo className='w-20'/>
         </Box>
 
         <SidebarButton hover={hover} variant={variant} path='/admin' name='Inicio'>
@@ -46,15 +46,15 @@ const Sidebar = ({ isOpen, variant, onClose, hover, setHover }) => {
             onMouseOver={() => setHover(true)}
             onMouseOut={() => setHover(false)}
             style={{ transition: 'width 0.3s ease' }}
-            className='bg-colorDark dark:bg-colorBase'
+            className='bg-colorDark dark:bg-colorDarker'
         >
             <SidebarContent variant={variant} hover={hover} />
         </Box>
     ) : (
         <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
             <DrawerOverlay>
-                <DrawerContent className='bg-colorDark dark:bg-colorBase'>
-                    <DrawerCloseButton />
+                <DrawerContent style={{backgroundColor:"#2B281C"}}>
+                    <DrawerCloseButton color='white'/>
                     <DrawerBody>
                         <SidebarContent variant={variant}/>
                     </DrawerBody>

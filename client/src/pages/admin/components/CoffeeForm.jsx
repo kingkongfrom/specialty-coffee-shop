@@ -3,23 +3,8 @@ import { useState } from "react";
 import {roastTypes, grindingTypes, weights, processTypes, regions} from "../../../utils/constants.js";
 import {capitalize, capitalizeWords } from "../../../utils/stringFunctions.js";
 
-const CoffeeForm = ({ inputColor }) => {
-    //State to store Coffee props
-    const [coffee, setCoffee] = useState({
-        SKU:'',
-        producer:'',
-        variety:'',
-        roast:'',
-        weight:0,
-        grinding:'',
-        region:'',
-        process:'',
-        description:'',
-        price:0,
-        discount:null,
-        discount_start_date:null,
-        discount_end_date:null,
-    });
+const CoffeeForm = ({ coffee, setCoffee }) => {
+
     //Function to update coffee props
     const handleChange = (e) => {
         setCoffee({
@@ -29,7 +14,7 @@ const CoffeeForm = ({ inputColor }) => {
     }
 
     return (
-        <Box className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <Box className="grid grid-cols-1 gap-3 md:grid-cols-2">
             <Box className="grid gap-3">
                 {/*SKU*/}
                 <FormControl isRequired>
@@ -40,19 +25,21 @@ const CoffeeForm = ({ inputColor }) => {
                         name="SKU"
                         value={coffee.SKU}
                         onChange={handleChange}
-                        style={{ backgroundColor: inputColor || "white" }}
+                        className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase"
                     />
                 </FormControl>
 
                 {/*Producer Name*/}
                 <FormControl isRequired>
-                    <FormLabel>Nombre del productor {coffee.producer}</FormLabel>
+                    <FormLabel>
+                        Nombre del productor {coffee.producer}
+                    </FormLabel>
                     <Input
                         id="producer"
                         name="producer"
                         value={coffee.producer}
                         onChange={handleChange}
-                        style={{ backgroundColor: inputColor || "white" }}
+                        className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase"
                     />
                 </FormControl>
 
@@ -64,13 +51,17 @@ const CoffeeForm = ({ inputColor }) => {
                         name="region"
                         value={coffee.region}
                         onChange={handleChange}
-                        style={{ backgroundColor: inputColor || "white" }}
+                        className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase"
                     >
+                        <option value={null} className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase">Seleccione la region</option>
                         {regions.map((region) => (
                             <option
                                 key={region}
                                 value={region}
-                            >{capitalizeWords(region)}</option>
+                                className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase"
+                            >
+                                {capitalizeWords(region)}
+                            </option>
                         ))}
                     </Select>
                 </FormControl>
@@ -83,7 +74,7 @@ const CoffeeForm = ({ inputColor }) => {
                         name="variety"
                         value={coffee.variety}
                         onChange={handleChange}
-                        style={{ backgroundColor: inputColor || "white" }}
+                        className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase"
                     />
                 </FormControl>
             </Box>
@@ -96,13 +87,19 @@ const CoffeeForm = ({ inputColor }) => {
                         name="roast"
                         value={coffee.roast}
                         onChange={handleChange}
-                        style={{ backgroundColor: inputColor || "white" }}
+                        className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase"
                     >
+                        <option value={null} className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase">
+                            Seleccione el tipo de tueste
+                        </option>
                         {roastTypes.map((roastType) => (
                             <option
                                 key={roastType}
                                 value={roastType}
-                            >{capitalize(roastType)}</option>
+                                className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase"
+                            >
+                                {capitalize(roastType)}
+                            </option>
                         ))}
                     </Select>
                 </FormControl>
@@ -115,13 +112,17 @@ const CoffeeForm = ({ inputColor }) => {
                         name="weight"
                         value={coffee.weight}
                         onChange={handleChange}
-                        style={{ backgroundColor: inputColor || "white" }}
+                        className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase"
                     >
+                        <option value={null} className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase">Seleccione el peso</option>
                         {weights.map((weight) => (
                             <option
                                 key={weight}
                                 value={weight}
-                            >{weight} gramos</option>
+                                className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase"
+                            >
+                                {weight} gramos
+                            </option>
                         ))}
                     </Select>
                 </FormControl>
@@ -134,13 +135,17 @@ const CoffeeForm = ({ inputColor }) => {
                         name="grinding"
                         value={coffee.grinding}
                         onChange={handleChange}
-                        style={{ backgroundColor: inputColor || "white" }}
+                        className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase"
                     >
+                        <option value={null} className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase">Seleccione el tipo de grano</option>
                         {grindingTypes.map((grindingType) => (
                             <option
                                 key={grindingType}
                                 value={grindingType}
-                            >{capitalize(grindingType)}</option>
+                                className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase"
+                            >
+                                {capitalize(grindingType)}
+                            </option>
                         ))}
                     </Select>
                 </FormControl>
@@ -153,13 +158,19 @@ const CoffeeForm = ({ inputColor }) => {
                         name="process"
                         value={coffee.process}
                         onChange={handleChange}
-                        style={{ backgroundColor: inputColor || "white" }}
+                        className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase"
                     >
+                        <option value={null} className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase">
+                            Seleccione el proceso
+                        </option>
                         {processTypes.map((processType) => (
                             <option
                                 key={processType}
                                 value={processType}
-                            >{capitalize(processType)}</option>
+                                className="!bg-white !text-colorDark dark:!bg-colorDark dark:!text-colorBase"
+                            >
+                                {capitalize(processType)}
+                            </option>
                         ))}
                     </Select>
                 </FormControl>

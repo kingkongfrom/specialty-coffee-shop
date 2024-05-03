@@ -6,12 +6,12 @@ import ThemeToggle from "../../../ui/ThemeToggle.jsx";
 const Header = ({ showSidebarButton = true, onShowSidebar }) => {
 
     return (
-        <Flex className='bg-colorDark dark:bg-colorBase' color="white" justifyContent="space-between" alignItems="center" px={5}>
+        <Flex className='bg-colorDark dark:bg-colorDarker ' color="white" justifyContent="space-between" alignItems="center" px={5}>
             <Box >
                 {showSidebarButton && (
                     <IconButton
-                        icon={<GiHamburgerMenu  w={8} h={8} />}
-                        className='text-colorBase dark:text-colorDark'
+                        icon={<GiHamburgerMenu  size={30} />}
+                        className='text-colorBase'
                         variant="fill"
                         onClick={onShowSidebar}
                         aria-label="open sidebar"
@@ -19,7 +19,7 @@ const Header = ({ showSidebarButton = true, onShowSidebar }) => {
                     />
                 )}
             </Box>
-            <Box className='visible md:invisible py-3 '>
+            <Box className='visible md:invisible py-3 md:py-0'>
                 <Box fontSize="xl"><Logo/></Box>
             </Box>
 

@@ -17,7 +17,7 @@ const AdminLayout = () => {
     const toggleSidebar = () => setSidebarOpen(!isSidebarOpen)
 
     return (
-        <main className='min-h-screen bg-gray-50 dark:bg-colorDark dark:text-colorBase' >
+        <main className='min-h-screen bg-gray-50 dark:bg-colorDark text-colorDark dark:text-colorBase' >
             <Sidebar
                 variant={variants?.navigation}
                 isOpen={isSidebarOpen}

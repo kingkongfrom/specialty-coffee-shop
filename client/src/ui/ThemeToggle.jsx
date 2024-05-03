@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { IconButton, useColorMode } from "@chakra-ui/react";
+import { IconButton } from "@chakra-ui/react";
 import { FaMoon, FaSun } from "react-icons/fa";
 
 const ThemeToggle = () => {
     // State to check if dark mode is enabled, state for Tailwind
     const [darkMode, setDarkMode] = useState(false);
-    // //Toggle Color Mode for Chakra UI Components
-    const { colorMode, toggleColorMode } = useColorMode();
 
     // Effect to read the theme from local storage
     useEffect(() => {

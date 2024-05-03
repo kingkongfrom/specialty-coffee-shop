@@ -27,6 +27,7 @@ export default {
                 colorSecondary: "#D0CABD",
                 colorBase: "#BBAA92",
                 colorDark: "#2B281C",
+                colorDarker: "#12110d",
             },
         },
     },
