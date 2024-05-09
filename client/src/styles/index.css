@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/*Generates a random background*/
+.bg-random {
+    background-image: url('https://source.unsplash.com/random/1920×1080/?coffee');
+    background-size: cover;
+    background-position: center;
+}
+
 /*Image Uploader styles*/
 .controls {
     display: flex;
@@ -36,8 +43,4 @@
     height: 208px;
 }
 
-body.dark .ck-content {
-    background: black !important;
-    color: #ccc !important;
-}
 

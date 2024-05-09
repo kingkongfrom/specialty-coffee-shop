@@ -32,7 +32,6 @@ const AddCoffeePage = () => {
         discount_end_date:null,
     });
 
-    console.log(coffee)
     return (
         <Container maxW='95%'>
             <Box className='pb-5'>

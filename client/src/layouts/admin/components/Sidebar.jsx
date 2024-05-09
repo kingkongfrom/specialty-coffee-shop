@@ -1,11 +1,9 @@
 
 import {
     Box,
-    Button,
     Drawer,
     DrawerOverlay,
     DrawerCloseButton,
-    DrawerHeader,
     DrawerBody,
     DrawerContent,
     VStack, Text, Flex
@@ -14,23 +12,28 @@ import Logo from "../../../ui/Logo.jsx";
 import { MdSpaceDashboard } from "react-icons/md";
 import { FaClipboardList } from "react-icons/fa";
 import SidebarButton from "./SidebarButton.jsx";
+import ThemeToggle from "../../../ui/ThemeToggle.jsx";
 
 //Sidebar Content defined with a vertical stack with buttons
 const SidebarContent = ({ variant , hover }) => (
-    <VStack className='text-colorBase'>
-        <Box className='invisible h-[50px] md:visible md:h-auto md:mb-3'>
-            <Logo className='w-20'/>
-        </Box>
+    <Flex direction='column' alignContent='space-between' h='90vh' className='text-colorBase'>
+        <VStack className='flex-1'>
+            <Box className='invisible h-[50px] md:visible md:h-auto md:mb-3'>
+                <Logo className='w-20'/>
+            </Box>
 
-        <SidebarButton hover={hover} variant={variant} path='/admin' name='Inicio'>
-            <MdSpaceDashboard size={30} />
-        </SidebarButton>
+            <SidebarButton hover={hover} variant={variant} path='/admin' name='Inicio'>
+                <MdSpaceDashboard size={30} />
+            </SidebarButton>
 
-        <SidebarButton hover={hover} variant={variant} path='/admin/products' name='Productos'>
-            <FaClipboardList size={30} />
-        </SidebarButton>
-
-    </VStack>
+            <SidebarButton hover={hover} variant={variant} path='/admin/products' name='Productos'>
+                <FaClipboardList size={30} />
+            </SidebarButton>
+        </VStack>
+        <Flex className={hover ? 'justify-start' : 'justify-center'}>
+            <ThemeToggle />
+        </Flex>
+    </Flex>
 )
 //Sidebar component
 const Sidebar = ({ isOpen, variant, onClose, hover, setHover }) => {

@@ -24,8 +24,7 @@ const ThemeToggle = () => {
         <IconButton
             icon={darkMode ? <FaSun /> : <FaMoon /> }
             isRound={true}
-            size="lg"
-            alignSelf="flex-end"
+            size="md"
             onClick={toggleTheme}
             aria-label="Toggle theme"
         />

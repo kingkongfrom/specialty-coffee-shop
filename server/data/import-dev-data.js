@@ -3,7 +3,7 @@ const Coffee = require("../models/coffee");
 const { connect, connection } = require("mongoose");
 
 const dotenv = require("dotenv");
-dotenv.config({ path: "./.env" });
+dotenv.config({ path: "./.env.local" });
 
 const DB = process.env.DATABASE.replace("<PASSWORD>", process.env.DATABASE_PASSWORD);
 

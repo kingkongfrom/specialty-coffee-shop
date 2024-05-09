@@ -1,7 +1,8 @@
 import { Box, Center, IconButton, Text, Flex } from '@chakra-ui/react'
 import { GiHamburgerMenu } from "react-icons/gi";
 import Logo from "../../../ui/Logo.jsx";
-import ThemeToggle from "../../../ui/ThemeToggle.jsx";
+import { SignedIn, UserButton } from "@clerk/clerk-react";
+
 
 const Header = ({ showSidebarButton = true, onShowSidebar }) => {
 
@@ -23,8 +24,10 @@ const Header = ({ showSidebarButton = true, onShowSidebar }) => {
                 <Box fontSize="xl"><Logo/></Box>
             </Box>
 
-            <Box >
-                <ThemeToggle />
+            <Box>
+                <SignedIn>
+                    <UserButton afterSignOutUrl="/admin/sign-in" />
+                </SignedIn>
             </Box>
         </Flex>
     )
