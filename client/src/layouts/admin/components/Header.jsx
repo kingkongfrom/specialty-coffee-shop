@@ -26,7 +26,7 @@ const Header = ({ showSidebarButton = true, onShowSidebar }) => {
 
             <Box>
                 <SignedIn>
-                    <UserButton afterSignOutUrl="/admin/sign-in" />
+                    <UserButton afterSignOutUrl="/admin/sign-in" appearance={{elements:{userButtonAvatarBox:'w-11 h-11',userButtonPopoverFooter:'hidden'}}} />
                 </SignedIn>
             </Box>
         </Flex>
