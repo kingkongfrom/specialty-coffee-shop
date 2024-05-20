@@ -1,8 +1,8 @@
-import Header from "../ui/Header.jsx";
+import Header from "./components/Header.jsx";
 import { Outlet } from "react-router-dom";
-import Footer from "../ui/Footer.jsx";
+import Footer from "./components/Footer.jsx";
 
-const AppLayout = () => {
+const MainLayout = () => {
     return (
         <div className="flex flex-col">
             <Header />
@@ -16,6 +16,4 @@ const AppLayout = () => {
     );
 };
 
-export default AppLayout;
-
-
+export default MainLayout;

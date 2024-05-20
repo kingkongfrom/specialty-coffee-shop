@@ -42,5 +42,8 @@
     cursor: move;
     height: 208px;
 }
-
+/*Hides Ck Editor panel*/
+.ck-balloon-panel{
+    visibility: hidden !important;
+}
 

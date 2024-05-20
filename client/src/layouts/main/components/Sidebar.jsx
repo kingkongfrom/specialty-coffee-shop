@@ -1,4 +1,4 @@
-import { useIsMobile } from "../hooks/useIsMobile.js";
+import { useIsMobile } from "../../../hooks/useIsMobile.js";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {

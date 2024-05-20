@@ -6,8 +6,8 @@ import {
     BreadcrumbLink, Box, Container, Button, Text
 } from "@chakra-ui/react";
 import { useState } from "react";
-import CoffeeForm from "./components/CoffeeForm.jsx";
-import ImageUpload from "./components/ImageUpload.jsx";
+import CoffeeForm from "../components/CoffeeForm.jsx";
+import ImageUpload from "../components/ImageUpload.jsx";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 

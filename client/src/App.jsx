@@ -1,31 +1,34 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import AppLayout from "./layouts/AppLayout.jsx";
 import Error from "./ui/Error.jsx";
 import Home from "./pages/Home.jsx";
-import StoreLayout from "./layouts/StoreLayout.jsx";
 import FrontStore from "./pages/FrontStore.jsx";
 import AdminLayout from "./layouts/admin/AdminLayout.jsx";
 import AdminPage from "./pages/admin/AdminPage.jsx";
-import AddCoffeePage from "./pages/admin/AddCoffeePage.jsx";
-import ProductsPage from "./pages/admin/ProductsPage.jsx";
+import AddCoffeePage from "./pages/admin/products/AddCoffeePage.jsx";
+import ProductsPage from "./pages/admin/products/ProductsPage.jsx";
 import SignInPage from "./pages/admin/SignInPage.jsx";
 import AdminAuth from "./layouts/admin/AdminAuth.jsx";
+import MainLayout from "./layouts/main/MainLayout.jsx";
+import Auth from "./layouts/main/Auth.jsx";
 
 function App() {
+    //Receives Auth with Clerk Provider
+    //https://clerk.com/docs/references/react/add-react-router - Step 4
     const router = createBrowserRouter([
         {
-            element: <AppLayout />,
-            errorElement: <Error />,
-            children: [{ path: "/", element: <Home /> }],
+            element: <Auth />,
+            children: [
+                {
+                    element: <MainLayout />,
+                    // errorElement: <Error />,
+                    children: [
+                        { path: "/", element: <Home /> },
+                        { path: "/store", element: <FrontStore /> },
+                    ],
+                },
+            ],
         },
         {
-            element: <StoreLayout />,
-            errorElement: <Error />,
-            children: [{ path: "/store", element: <FrontStore /> }],
-        },
-        {
-            //Receives Admin Auth with Clerk Provider
-            //https://clerk.com/docs/references/react/add-react-router - Step 4
             element: <AdminAuth />,
             children: [
                 { path: "/admin/sign-in/*", element: <SignInPage /> },

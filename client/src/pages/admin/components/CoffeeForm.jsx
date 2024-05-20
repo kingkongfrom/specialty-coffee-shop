@@ -1,4 +1,4 @@
-import { Box, FormControl, FormHelperText, FormLabel, Input, Select } from "@chakra-ui/react";
+import { Box, Divider, FormControl, FormHelperText, FormLabel, Input, Select } from "@chakra-ui/react";
 import { useState } from "react";
 import {roastTypes, grindingTypes, weights, processTypes, regions} from "../../../utils/constants.js";
 import {capitalize, capitalizeWords } from "../../../utils/stringFunctions.js";
@@ -14,7 +14,7 @@ const CoffeeForm = ({ coffee, setCoffee }) => {
     }
 
     return (
-        <Box className="grid grid-cols-1 gap-3 md:grid-cols-2">
+        <Box className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <Box className="grid gap-3">
                 {/*SKU*/}
                 <FormControl isRequired>
@@ -175,6 +175,8 @@ const CoffeeForm = ({ coffee, setCoffee }) => {
                     </Select>
                 </FormControl>
             </Box>
+            <Divider my={5} className='!border-2 !border-colorDark md:col-span-2'/>
+
         </Box>
     );
 }

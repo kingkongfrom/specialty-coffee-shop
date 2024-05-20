@@ -1,11 +1,19 @@
-import { useIsMobile } from "../hooks/useIsMobile";
+import { useIsMobile } from "../../../hooks/useIsMobile.js";
 import { Link, NavLink } from "react-router-dom";
 import { Fragment, useEffect, useState } from "react";
-import logo from "../../public/images/logo.png";
-import Logo from "./Logo.jsx";
+import logo from "../../../../public/images/logo.png";
+import Logo from "../../../ui/Logo.jsx";
 import { FaRegUserCircle } from "react-icons/fa";
+import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
+import SignInButton from "./SignInButton.jsx";
 
 const Navigation = () => {
+    //Const to Store the Paths and Routes
+    const navOptions = [
+        { name: "Inicio", path: "/"},
+        { name: "Tienda", path: "/store"},
+        { name: "Contacto", path: "#"},
+    ];
     const isMobile = useIsMobile();
     const [showMobileMenu, setShowMobileMenu] = useState(false);
 
@@ -38,10 +46,10 @@ const Navigation = () => {
 
     return (
         <nav className="relative flex h-24 items-center font-serif font-extralight justify-between px-6 text-stone-100">
-            <Logo/>
+            <Logo />
             <button onClick={toggleMobileMenu} className={`z-50 block md:hidden ${showMobileMenu ? "hidden" : ""}`}>
                 <svg className="h-10 w-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" fill="currentColor"/>
+                    <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" fill="currentColor" />
                 </svg>
             </button>
             {showMobileMenu && isMobile && (
@@ -50,36 +58,19 @@ const Navigation = () => {
                      transition-transform duration-1000"
                 >
                     <div className="mb-[150px] flex flex-col gap-4 text-center">
-                        <NavLink
-                            to="/"
-                            className={`text-2xl ${
-                                showMobileMenu ? "opacity-100" : "opacity-0"
-                            }`}
-                            onClick={closeMobileMenu}
-                        >
-                            Inicio
-                        </NavLink>
-                        <NavLink to="/store" className={`text-2xl ${showMobileMenu ? "opacity-100" : "opacity-0"}`} onClick={closeMobileMenu}>
-                            Tienda
-                        </NavLink>
-                        <NavLink
-                            to="#"
-                            className={`text-2xl ${
-                                showMobileMenu ? "opacity-100" : "opacity-0"
-                            }`}
-                            onClick={closeMobileMenu}
-                        >
-                            Contacto
-                        </NavLink>
-                        <NavLink
-                            to="#"
-                            className={`text-2xl ${
-                                showMobileMenu ? "opacity-100" : "opacity-0"
-                            }`}
-                            onClick={closeMobileMenu}
-                        >
-                            Cuenta
-                        </NavLink>
+                        {navOptions.map((option) => {
+                            return (
+                                <NavLink
+                                    to={option.path}
+                                    className={`text-2xl ${
+                                        showMobileMenu ? "opacity-100" : "opacity-0"
+                                    }`}
+                                    onClick={closeMobileMenu}
+                                >
+                                    {option.name}
+                                </NavLink>
+                            )
+                        })}
                     </div>
                     <button
                         onClick={toggleMobileMenu}
@@ -105,18 +96,18 @@ const Navigation = () => {
             {!isMobile && (
                 <Fragment>
                     <div className="flex gap-24 text-md">
-                        <NavLink to="/" className="">Inicio</NavLink>
-                        <NavLink to="/store" className="">Tienda</NavLink>
-                        <NavLink to="#" className="">Contacto</NavLink>
-                    </div>
-                    <div>
-                        <NavLink to="#" className="text-lg">
-                            <FaRegUserCircle size={20} className="focus:ring-2 focus:ring-white focus:rounded-full
-                            hover:ring-2 hover:ring-white hover:rounded-full"/>
-                        </NavLink>
+                        {navOptions.map((option) => <Link to={option.path}>{option.name}</Link>)}
                     </div>
                 </Fragment>
             )}
+            <div>
+                <SignedOut>
+                    <SignInButton />
+                </SignedOut>
+                <SignedIn>
+                    <UserButton afterSignOutUrl={window.location.href} appearance={{elements:{userButtonAvatarBox:'w-11 h-11',userButtonPopoverFooter:'hidden'}}}/>
+                </SignedIn>
+            </div>
         </nav>
     );
 };
